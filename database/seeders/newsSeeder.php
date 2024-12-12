@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\news;
 class newsSeeder extends Seeder
 {
     /**
@@ -15,12 +13,6 @@ class newsSeeder extends Seeder
      */
     public function run()
     {
-        $fake = Faker::create();
-        DB::table('news')->insert([
-            'title' => fake()->title(),
-            'description' => fake()->paragraph(2,true),
-            'category' => fake()->sentence(),
-            'author' => fake()->email(),
-        ]);
+        news::factory(50)->create();
     }
 }

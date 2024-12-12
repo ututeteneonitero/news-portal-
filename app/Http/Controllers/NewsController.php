@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\news;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use PhpParser\Node\Expr\New_;
 
 class NewsController extends Controller
 {
@@ -14,7 +16,12 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::all();
+        return Inertia::render('Homepage',[
+            'title' => "Homepage",
+            'description' => 'Selamat datang di portal berita',
+            'news' =>  $news,
+        ]);
     }
 
     /**
